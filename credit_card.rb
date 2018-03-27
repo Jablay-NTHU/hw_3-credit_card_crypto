@@ -1,6 +1,8 @@
 require_relative './luhn_validator.rb'
 require 'json'
+require 'rbnacl/libsodium'
 
+# define class CreditCard
 class CreditCard
   # TODO: mixin the LuhnValidator using an 'include' statement
   include LuhnValidator
@@ -55,5 +57,12 @@ class CreditCard
     # TODO: implement this method
     #   - Use sha256 from openssl to create a cryptographically secure hash.
     #   - Credit cards with identical information should produce the same hash
+    card_data = {
+      number: number,
+      expiration_date: expiration_date,
+      owner: owner,
+      credit_network: credit_network
+    }.to_s
+    RbNaCl::Hash.sha256(card_data)
   end
 end
