@@ -4,7 +4,6 @@ require 'yaml'
 
 describe 'Test hashing requirements' do
   before do
-    # Feel free to replace the contents of cards with data from your own yaml file
     yml_filepath = 'spec/fixtures/cc_results.yml'
     @card_details = YAML.safe_load(File.read(yml_filepath), [Symbol])
     @cards = @card_details.map do |c|
