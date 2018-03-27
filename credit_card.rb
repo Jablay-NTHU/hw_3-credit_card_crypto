@@ -42,6 +42,12 @@ class CreditCard
     #   - Produce a hash (using default hash method) of the credit card's
     #     serialized contents.
     #   - Credit cards with identical information should produce the same hash
+    {
+      number: @number,
+      expiration_date: @expiration_date,
+      owner: @owner,
+      credit_network: @credit_network
+    }.hash
   end
 
   # return a cryptographically secure hash
